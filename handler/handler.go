@@ -17,7 +17,12 @@ func (h HandlerTodo) AddTodo(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h HandlerTodo) GetTodos(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("GetTodos")
+	if r.Method != http.MethodGet {
+		w.WriteHeader(http.StatusNotImplemented)
+		return
+	}
+	w.WriteHeader(http.StatusOK)
+
 }
 
 func NewHandlerTodo() IHandlerTodo {

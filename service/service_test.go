@@ -30,3 +30,19 @@ func Test_TodoService_GetTodos(t *testing.T) {
 
 	assert.Equal(t, &expectedRepository, &actualRepository)
 }
+
+func TestTodoService_AddTodo(t *testing.T) {
+	expectedRepository := model.Todo{
+		ID:   1,
+		Todo: "Dummy",
+	}
+	mockRepository := gomock.NewController(t)
+	repository := mocks.NewMockIRepositoryTodo(mockRepository)
+	repository.EXPECT().GetTodos().Return(nil).Times(1)
+	repository.EXPECT().AddTodo(expectedRepository).Return(&expectedRepository).Times(1)
+
+	service := service.NewTodoService(repository)
+	actualRepository := service.AddTodo("Dummy")
+
+	assert.Equal(t, &expectedRepository, actualRepository)
+}

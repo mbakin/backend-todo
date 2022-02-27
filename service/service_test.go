@@ -9,7 +9,7 @@ import (
 	"testing"
 )
 
-func Test_TodoService(t *testing.T) {
+func Test_TodoService_GetTodos(t *testing.T) {
 	repositoryReturn := map[string]*model.Todo{
 		"Dummy": &model.Todo{
 			ID:   1000,

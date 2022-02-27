@@ -4,7 +4,6 @@ import (
 	"backend_todo/model"
 	"backend_todo/service"
 	"encoding/json"
-	"fmt"
 	"net/http"
 )
 
@@ -49,7 +48,6 @@ func (h *HandlerTodo) GetTodos(w http.ResponseWriter, r *http.Request) {
 	}
 	w.WriteHeader(http.StatusOK)
 	w.Write(jsonBytes)
-	fmt.Println("get request received")
 }
 
 func (h *HandlerTodo) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -62,7 +60,6 @@ func (h *HandlerTodo) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		h.AddTodo(w, r)
 		return
 	default:
-		fmt.Println("Bad request")
 		return
 	}
 

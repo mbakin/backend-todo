@@ -1,17 +1,14 @@
 package main
 
 import (
-	"backend_todo/handler"
-	"fmt"
-	"net/http"
+	"backend_todo/server"
+	"log"
 )
 
 func main() {
-	todoHandler := handler.NewHandlerTodo()
-	http.HandleFunc("/api/v1/todos", todoHandler.GetTodos)
-
-	err := http.ListenAndServe(":3000", nil)
+	svr := server.NewServer()
+	err := svr.StartServer(3000)
 	if err != nil {
-		fmt.Println(err)
+		log.Fatalln(err)
 	}
 }

@@ -19,6 +19,14 @@ func NewTodoService(todoRepository repository.IRepositoryTodo) ITodoService {
 }
 
 func (todoService TodoService) GetTodos() []*model.Todo {
+	getTodos := todoService.todoRepository.GetTodos()
+	getTodoList := make([]*model.Todo, 0)
+
+	for _, getTodo := range getTodos {
+		getTodoList = append(getTodoList, getTodo)
+	}
+
+	return getTodoList
 }
 
 func (todoService TodoService) AddTodo(newTodo string) *model.Todo {

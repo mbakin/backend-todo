@@ -21,8 +21,8 @@ func Test_TodoService_GetTodos(t *testing.T) {
 		ID:   1000,
 		Todo: "Dummy",
 	})
-
-	repository := mocks.NewMockIRepositoryTodo(gomock.NewController(t))
+	mockRepository := gomock.NewController(t)
+	repository := mocks.NewMockIRepositoryTodo(mockRepository)
 	repository.EXPECT().GetTodos().Return(repositoryReturn).Times(1)
 
 	service := service.NewTodoService(repository)

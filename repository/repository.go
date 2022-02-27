@@ -8,16 +8,23 @@ type IRepositoryTodo interface {
 }
 
 type TodoRepository struct {
+	Todo map[string]*model.Todo
 }
 
-func (t *TodoRepository) GetTodos() map[string]*model.Todo {
-	return map[string]*model.Todo{}
+func (r *TodoRepository) GetTodos() map[string]*model.Todo {
+	allList := r.Todo
+	return allList
 }
 
-func (t *TodoRepository) AddTodo(todo model.Todo) *model.Todo {
-	return nil
+func (r *TodoRepository) AddTodo(todo model.Todo) *model.Todo {
+	r.Todo[todo.Todo] = &model.Todo{
+		ID:   todo.ID,
+		Todo: todo.Todo,
+	}
+
+	return r.Todo[todo.Todo]
 }
 
 func NewRepositoryTodo() IRepositoryTodo {
-	return &TodoRepository{}
+	return &TodoRepository{Todo: map[string]*model.Todo{}}
 }

@@ -30,5 +30,15 @@ func (todoService TodoService) GetTodos() []*model.Todo {
 }
 
 func (todoService TodoService) AddTodo(newTodo string) *model.Todo {
-	return nil
+	AllTodos := todoService.todoRepository.GetTodos()
+	TodoByDescription, existTodo := AllTodos[newTodo]
+	if existTodo == true {
+		return TodoByDescription
+	}
+	todoId := len(AllTodos) + 1
+	todo := model.Todo{
+		ID:   todoId,
+		Todo: newTodo,
+	}
+	return todoService.todoRepository.AddTodo(todo)
 }

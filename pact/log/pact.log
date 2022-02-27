@@ -1,0 +1,31 @@
+# Logfile created on 2022-02-28 01:41:56 +0300 by logger.rb/47272
+I, [2022-02-28T01:41:57.017120 #26928]  INFO -- : Running example 'Verifying a pact between frontend and backend Given todo list succesfully retrieved a request for todo list properly with GET /api/v1/todos returns a response which has status code 200'
+I, [2022-02-28T01:41:57.017407 #26928]  INFO -- : Sending GET request to path: "/api/v1/todos" with headers: {"X_PACT_PROVIDER_STATES"=>[{"name"=>"todo list succesfully retrieved"}]}, see debug logs for body
+D, [2022-02-28T01:41:57.017427 #26928] DEBUG -- : body :
+I, [2022-02-28T01:41:57.031592 #26928]  INFO -- : Received response with status: 200, headers: {"Content-Length"=>"2", "Content-Type"=>"application/json; charset=utf-8", "Date"=>"Sun, 27 Feb 2022 22:41:57 GMT"}, see debug logs for body
+D, [2022-02-28T01:41:57.031648 #26928] DEBUG -- : body: []
+I, [2022-02-28T01:41:57.032781 #26928]  INFO -- : Running example 'Verifying a pact between frontend and backend Given todo item succesfully created a request for create todo item properly with POST /api/v1/todos returns a response which has status code 201'
+I, [2022-02-28T01:41:57.033000 #26928]  INFO -- : Sending POST request to path: "/api/v1/todos" with headers: {"X_PACT_PROVIDER_STATES"=>[{"name"=>"todo item succesfully created"}]}, see debug logs for body
+D, [2022-02-28T01:41:57.033025 #26928] DEBUG -- : body :{"todo":"dummy todo 2"}
+I, [2022-02-28T01:41:57.035725 #26928]  INFO -- : Received response with status: 201, headers: {"Content-Length"=>"60", "Content-Type"=>"application/json; charset=utf-8", "Date"=>"Sun, 27 Feb 2022 22:41:57 GMT"}, see debug logs for body
+D, [2022-02-28T01:41:57.035750 #26928] DEBUG -- : body: {"id":1,"todo":"dummy todo 2","time":"0001-01-01T00:00:00Z"}
+I, [2022-02-28T01:42:08.968112 #26983]  INFO -- : Running example 'Verifying a pact between frontend and backend Given todo list succesfully retrieved a request for todo list properly with GET /api/v1/todos returns a response which has status code 200'
+I, [2022-02-28T01:42:08.968938 #26983]  INFO -- : Sending GET request to path: "/api/v1/todos" with headers: {"X_PACT_PROVIDER_STATES"=>[{"name"=>"todo list succesfully retrieved"}]}, see debug logs for body
+D, [2022-02-28T01:42:08.968958 #26983] DEBUG -- : body :
+I, [2022-02-28T01:42:08.981750 #26983]  INFO -- : Received response with status: 200, headers: {"Content-Length"=>"2", "Content-Type"=>"application/json; charset=utf-8", "Date"=>"Sun, 27 Feb 2022 22:42:08 GMT"}, see debug logs for body
+D, [2022-02-28T01:42:08.981797 #26983] DEBUG -- : body: []
+I, [2022-02-28T01:42:08.982845 #26983]  INFO -- : Running example 'Verifying a pact between frontend and backend Given todo item succesfully created a request for create todo item properly with POST /api/v1/todos returns a response which has status code 201'
+I, [2022-02-28T01:42:08.983062 #26983]  INFO -- : Sending POST request to path: "/api/v1/todos" with headers: {"X_PACT_PROVIDER_STATES"=>[{"name"=>"todo item succesfully created"}]}, see debug logs for body
+D, [2022-02-28T01:42:08.983088 #26983] DEBUG -- : body :{"todo":"dummy todo 2"}
+I, [2022-02-28T01:42:08.985698 #26983]  INFO -- : Received response with status: 201, headers: {"Content-Length"=>"60", "Content-Type"=>"application/json; charset=utf-8", "Date"=>"Sun, 27 Feb 2022 22:42:08 GMT"}, see debug logs for body
+D, [2022-02-28T01:42:08.985722 #26983] DEBUG -- : body: {"id":1,"todo":"dummy todo 2","time":"0001-01-01T00:00:00Z"}
+I, [2022-02-28T01:43:44.820230 #27228]  INFO -- : Running example 'Verifying a pact between frontend and backend Given todo list succesfully retrieved a request for todo list properly with GET /api/v1/todos returns a response which has status code 200'
+I, [2022-02-28T01:43:44.821274 #27228]  INFO -- : Sending GET request to path: "/api/v1/todos" with headers: {"X_PACT_PROVIDER_STATES"=>[{"name"=>"todo list succesfully retrieved"}]}, see debug logs for body
+D, [2022-02-28T01:43:44.821294 #27228] DEBUG -- : body :
+I, [2022-02-28T01:43:44.834378 #27228]  INFO -- : Received response with status: 200, headers: {"Content-Length"=>"2", "Content-Type"=>"application/json; charset=utf-8", "Date"=>"Sun, 27 Feb 2022 22:43:44 GMT"}, see debug logs for body
+D, [2022-02-28T01:43:44.834432 #27228] DEBUG -- : body: []
+I, [2022-02-28T01:43:44.835514 #27228]  INFO -- : Running example 'Verifying a pact between frontend and backend Given todo item succesfully created a request for create todo item properly with POST /api/v1/todos returns a response which has status code 201'
+I, [2022-02-28T01:43:44.835734 #27228]  INFO -- : Sending POST request to path: "/api/v1/todos" with headers: {"X_PACT_PROVIDER_STATES"=>[{"name"=>"todo item succesfully created"}]}, see debug logs for body
+D, [2022-02-28T01:43:44.835759 #27228] DEBUG -- : body :{"todo":"dummy todo 2"}
+I, [2022-02-28T01:43:44.837938 #27228]  INFO -- : Received response with status: 201, headers: {"Content-Length"=>"60", "Content-Type"=>"application/json; charset=utf-8", "Date"=>"Sun, 27 Feb 2022 22:43:44 GMT"}, see debug logs for body
+D, [2022-02-28T01:43:44.837960 #27228] DEBUG -- : body: {"id":1,"todo":"dummy todo 2","time":"0001-01-01T00:00:00Z"}

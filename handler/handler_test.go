@@ -4,6 +4,7 @@ import (
 	"backend_todo/handler"
 	"backend_todo/mocks"
 	"backend_todo/model"
+	"bytes"
 	"encoding/json"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
@@ -32,4 +33,26 @@ func Test_Handler_GetTodos(t *testing.T) {
 
 	assert.Equal(t, w.Result().StatusCode, http.StatusOK)
 	assert.Equal(t, "application/json; charset=utf-8", w.Header().Get("content-type"))
+}
+
+func Test_Handler_AddTodo(t *testing.T) {
+	expectedRepository := model.Todo{
+		ID:   1,
+		Todo: "Dummy",
+	}
+	service := mocks.NewMockITodoService(gomock.NewController(t))
+	service.EXPECT().AddTodo("Dummy").Return(&expectedRepository).Times(1)
+
+	handler := handler.NewHandlerTodo(service)
+	var jsonStr = []byte(`{"todo":"Dummy"}`)
+	r := httptest.NewRequest(http.MethodPost, "/api/v1/todos", bytes.NewBuffer(jsonStr))
+	w := httptest.NewRecorder()
+	handler.ServeHTTP(w, r)
+
+	actual := w.Body.String()
+	json.Unmarshal(w.Body.Bytes(), &actual)
+
+	assert.Equal(t, w.Result().StatusCode, http.StatusCreated)
+	assert.Equal(t, "application/json; charset=utf-8", w.Header().Get("content-type"))
+
 }

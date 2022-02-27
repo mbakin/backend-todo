@@ -13,12 +13,6 @@ import (
 )
 
 func Test_Handler_GetTodos(t *testing.T) {
-	//repositoryReturn := map[string]*model.Todo{
-	//	"Dummy": &model.Todo{
-	//		ID:   1000,
-	//		Todo: "Dummy",
-	//	},
-	//}
 	expectedRepository := make([]*model.Todo, 0)
 	expectedRepository = append(expectedRepository, &model.Todo{
 		ID:   1000,

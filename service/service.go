@@ -2,6 +2,7 @@ package service
 
 import (
 	"backend_todo/model"
+	"backend_todo/repository"
 )
 
 type ITodoService interface {
@@ -10,10 +11,11 @@ type ITodoService interface {
 }
 
 type TodoService struct {
+	todoRepository repository.IRepositoryTodo
 }
 
-func NewTodoService() ITodoService {
-	return &TodoService{}
+func NewTodoService(todoRepository repository.IRepositoryTodo) ITodoService {
+	return &TodoService{todoRepository: todoRepository}
 }
 func (todoService TodoService) GetTodos() []*model.Todo {
 	return nil

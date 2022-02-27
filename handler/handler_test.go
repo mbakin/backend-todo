@@ -56,3 +56,13 @@ func Test_Handler_AddTodo(t *testing.T) {
 	assert.Equal(t, "application/json; charset=utf-8", w.Header().Get("content-type"))
 
 }
+
+func Test_Handler_AddTodo_BadRequest(t *testing.T) {
+	res := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodPost, "/api/v1/todoss", nil)
+
+	handler := handler.NewHandlerTodo(nil)
+	handler.ServeHTTP(res, req)
+
+	assert.Equal(t, res.Result().StatusCode, http.StatusBadRequest)
+}

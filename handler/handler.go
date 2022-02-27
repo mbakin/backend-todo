@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"backend_todo/model"
 	"backend_todo/service"
 	"encoding/json"
 	"fmt"
@@ -17,8 +18,25 @@ type HandlerTodo struct {
 	TodoService service.ITodoService
 }
 
-func (h HandlerTodo) AddTodo(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("AddTodo")
+func (h *HandlerTodo) AddTodo(w http.ResponseWriter, r *http.Request) {
+	todoDescription := model.Todo{}
+
+	err := json.NewDecoder(r.Body).Decode(&todoDescription)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	todo := h.TodoService.AddTodo(todoDescription.Todo)
+
+	jsonBytes, err := json.Marshal(todo)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	w.WriteHeader(http.StatusCreated)
+	w.Write(jsonBytes)
 }
 
 func (h *HandlerTodo) GetTodos(w http.ResponseWriter, r *http.Request) {
@@ -42,17 +60,12 @@ func (h *HandlerTodo) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	case r.Method == http.MethodPost:
 		h.AddTodo(w, r)
-		fmt.Println("post request received")
-		return
-	case r.Method == http.MethodDelete:
-		fmt.Println("delete request received ")
 		return
 	default:
 		fmt.Println("Bad request")
 		return
 	}
 
-	fmt.Println("request received")
 }
 
 func NewHandlerTodo(todoService service.ITodoService) IHandlerTodo {

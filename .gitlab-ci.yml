@@ -7,9 +7,7 @@ test:
   image : golang:latest
   script:
    - go mod download
-   - go test hander/hander_test.go
-   - go test service/service_test.go
-   - go test repository/repository_test.go
+   - go test $(go list ./... | grep -v /pact)
 
 
 build:

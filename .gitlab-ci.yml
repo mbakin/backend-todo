@@ -1,7 +1,7 @@
 stages:
   - build
   - test
-
+  - dockerize
 test:
   stage: test
   image : golang:latest
@@ -23,3 +23,13 @@ build:
       --context "${CI_PROJECT_DIR}"
       --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
       --destination "${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHORT_SHA}"
+
+dockerize:
+  image: docker:19.03.12
+  stage: dockerize
+  services:
+    - docker:19.03.12-dind
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $CI_REGISTRY_IMAGE .
+    - docker push $CI_REGISTRY_IMAGE

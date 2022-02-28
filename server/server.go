@@ -14,7 +14,7 @@ func NewServer() *Server {
 	return &Server{}
 }
 
-func (s *Server) StartServer(port int) error {
+func (s *Server) StartServer(port string) error {
 	todoRepository := repository.NewRepositoryTodo()
 	todoService := service.NewTodoService(todoRepository)
 	todoHandler := handler.NewHandlerTodo(todoService)
@@ -26,6 +26,6 @@ func (s *Server) StartServer(port int) error {
 	fmt.Println("Server is working")
 	fmt.Println("Server is running on port:", port)
 
-	err := http.ListenAndServe(fmt.Sprintf(":%d", port), mux)
+	err := http.ListenAndServe(fmt.Sprintf(":%s", port), mux)
 	return err
 }

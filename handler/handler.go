@@ -51,6 +51,9 @@ func (h *HandlerTodo) GetTodos(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *HandlerTodo) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	w.Header().Add("Access-Control-Allow-Origin", "*")
+	w.Header().Add("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+	w.Header().Add("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
 	w.Header().Set("content-type", "application/json; charset=utf-8")
 	switch {
 	case r.Method == http.MethodGet:

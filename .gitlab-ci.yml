@@ -2,6 +2,7 @@ stages:
   - build
   - test
   - dockerize
+  - deploy
 test:
   stage: test
   image : golang:latest
@@ -33,3 +34,18 @@ dockerize:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker build -t $CI_REGISTRY_IMAGE .
     - docker push $CI_REGISTRY_IMAGE
+
+deploy:
+  stage: deploy
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install faraday -v 1.10.0
+    - gem install dpl
+    - dpl --provider=heroku --app=backend-todo-assignment-mbakin --api-key=$HEROKU_API_KEY
+  environment:
+    name: Staging
+    url: https://backend-todo-assignment-mbakin.herokuapp.com/
+  only:
+    - main
+

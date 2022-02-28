@@ -1,6 +1,14 @@
 stages:
   - build
-  -
+  - test
+
+test:
+  stage: test
+  image:
+  script:
+    - go test ./...
+
+
 build:
   stage: build
   image:

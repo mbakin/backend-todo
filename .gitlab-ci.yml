@@ -1,7 +1,10 @@
 stages:
   - build
-
-
+  - tests
+tests:
+  stage: tests
+  script: 
+    - go test ./...
 build:
   stage: build
   image:

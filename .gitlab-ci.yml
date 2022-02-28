@@ -5,11 +5,9 @@ stages:
 test:
   stage: test
   script:
-    go test hander_test.go
-    go test service_test.go
-    go test repository_test.go
-
-
+    go test hander/hander_test.go
+    go test service/service_test.go
+    go test repository/repository_test.go
 
 build:
   stage: build

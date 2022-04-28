@@ -124,6 +124,13 @@ Development server : [localhost:3000]()
 
 
 
+#### Delete all todo list
+
+```http
+  DELETE /api/v1/todos/deleteAll
+```
+`$ curl localhost:3000/api/v1/todos/deleteAll`
+
 
 
 

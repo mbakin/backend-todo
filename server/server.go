@@ -22,6 +22,7 @@ func (s *Server) StartServer(port string) error {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/api/v1/todos", todoHandler.ServeHTTP)
+	mux.HandleFunc("/api/v1/todos/deleteAll", todoHandler.DeleteAllHandler)
 
 	fmt.Println("Server is working")
 	fmt.Println("Server is running on port:", port)

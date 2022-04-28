@@ -129,7 +129,7 @@ Development server : [localhost:3000]()
 ```http
   DELETE /api/v1/todos/deleteAll
 ```
-`$ curl -X DELETE localhost:3000/api/v1/todos/deleteAll -H "Accept: application/json"` 
+`$ curl -X DELETE localhost:3000/api/v1/todos/deleteAll` 
 
 
 

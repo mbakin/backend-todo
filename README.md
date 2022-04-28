@@ -107,29 +107,32 @@ Development server : [localhost:3000]()
 
 #### Get all todo list
 
-```http
-  GET /api/v1/todos
-```
-`$ curl localhost:3000/api/v1/todos`
+`GET /api/v1/todos`
 
+```http
+  curl localhost:3000/api/v1/todos
+```
 
 
 #### Create new todo item
 
-```http
-  POST /api/v1/todos
-```
+`POST /api/v1/todos`
 
-`$ curl -H "Content-type: application/json" -X POST -d '{"todo":"dummy"}' localhost:3000/api/v1/todos`
+```http
+  curl -H "Content-type: application/json" -X POST -d '{"todo":"dummy"}' localhost:3000/api/v1/todos
+```
 
 
 
 #### Delete all todo list
 
+` DELETE /api/v1/todos/deleteAll`
+
 ```http
-  DELETE /api/v1/todos/deleteAll
+  curl -X DELETE localhost:3000/api/v1/todos/deleteAll
+ 
 ```
-`$ curl -X DELETE localhost:3000/api/v1/todos/deleteAll` 
+ 
 
 
 

@@ -10,6 +10,7 @@ import (
 type IHandlerTodo interface {
 	AddTodo(w http.ResponseWriter, r *http.Request)
 	GetTodos(w http.ResponseWriter, r *http.Request)
+	DeleteAllHandler(w http.ResponseWriter, r *http.Request)
 	ServeHTTP(w http.ResponseWriter, r *http.Request)
 }
 
@@ -50,6 +51,11 @@ func (h *HandlerTodo) GetTodos(w http.ResponseWriter, r *http.Request) {
 	w.Write(jsonBytes)
 }
 
+func (h *HandlerTodo) DeleteAllHandler(w http.ResponseWriter, r *http.Request) {
+	h.TodoService.DeleteAllTodos()
+	w.WriteHeader(http.StatusOK)
+}
+
 func (h *HandlerTodo) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Access-Control-Allow-Origin", "*")
 	w.Header().Add("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
@@ -61,6 +67,9 @@ func (h *HandlerTodo) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	case r.Method == http.MethodPost:
 		h.AddTodo(w, r)
+		return
+	case r.Method == http.MethodDelete:
+		h.DeleteAllHandler(w, r)
 		return
 	default:
 		return

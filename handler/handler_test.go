@@ -66,3 +66,17 @@ func Test_Handler_AddTodo_BadRequest(t *testing.T) {
 
 	assert.Equal(t, res.Result().StatusCode, http.StatusBadRequest)
 }
+
+func TestHandlerTodo_DeleteAllHandler(t *testing.T) {
+
+	resW := httptest.NewRecorder()
+	req := httptest.NewRequest(http.MethodDelete, "/api/v1/todos/deleteAll", http.NoBody)
+
+	mockService := mocks.NewMockITodoService(gomock.NewController(t))
+	mockService.EXPECT().DeleteAllTodos().Return(nil).Times(1)
+
+	h := handler.NewHandlerTodo(mockService)
+	h.ServeHTTP(resW, req)
+
+	assert.Equal(t, http.StatusOK, resW.Result().StatusCode)
+}

@@ -48,6 +48,20 @@ func (mr *MockITodoServiceMockRecorder) AddTodo(todoDescription interface{}) *go
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddTodo", reflect.TypeOf((*MockITodoService)(nil).AddTodo), todoDescription)
 }
 
+// DeleteAllTodos mocks base method.
+func (m *MockITodoService) DeleteAllTodos() []*model.Todo {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "DeleteAllTodos")
+	ret0, _ := ret[0].([]*model.Todo)
+	return ret0
+}
+
+// DeleteAllTodos indicates an expected call of DeleteAllTodos.
+func (mr *MockITodoServiceMockRecorder) DeleteAllTodos() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteAllTodos", reflect.TypeOf((*MockITodoService)(nil).DeleteAllTodos))
+}
+
 // GetTodos mocks base method.
 func (m *MockITodoService) GetTodos() []*model.Todo {
 	m.ctrl.T.Helper()

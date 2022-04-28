@@ -3,11 +3,13 @@ package service
 import (
 	"backend_todo/model"
 	"backend_todo/repository"
+	"fmt"
 )
 
 type ITodoService interface {
 	GetTodos() []*model.Todo
 	AddTodo(todoDescription string) *model.Todo
+	DeleteAllTodos() []*model.Todo
 }
 
 type TodoService struct {
@@ -41,4 +43,21 @@ func (todoService TodoService) AddTodo(newTodo string) *model.Todo {
 		Todo: newTodo,
 	}
 	return todoService.todoRepository.AddTodo(todo)
+}
+
+func (todoService TodoService) DeleteAllTodos() []*model.Todo {
+
+	getTodos := todoService.todoRepository.GetTodos()
+
+	fmt.Println("test:", getTodos)
+
+	deleteAllTodos := todoService.todoRepository.DeleteAllTodos()
+	getTodoList := make([]*model.Todo, 0)
+
+	for _, getTodo := range deleteAllTodos {
+		getTodoList = append(getTodoList, getTodo)
+	}
+
+	return getTodoList
+
 }

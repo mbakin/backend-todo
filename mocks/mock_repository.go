@@ -48,6 +48,20 @@ func (mr *MockIRepositoryTodoMockRecorder) AddTodo(todo interface{}) *gomock.Cal
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "AddTodo", reflect.TypeOf((*MockIRepositoryTodo)(nil).AddTodo), todo)
 }
 
+// DeleteAllTodos mocks base method.
+func (m *MockIRepositoryTodo) DeleteAllTodos() map[string]*model.Todo {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "DeleteAllTodos")
+	ret0, _ := ret[0].(map[string]*model.Todo)
+	return ret0
+}
+
+// DeleteAllTodos indicates an expected call of DeleteAllTodos.
+func (mr *MockIRepositoryTodoMockRecorder) DeleteAllTodos() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteAllTodos", reflect.TypeOf((*MockIRepositoryTodo)(nil).DeleteAllTodos))
+}
+
 // GetTodos mocks base method.
 func (m *MockIRepositoryTodo) GetTodos() map[string]*model.Todo {
 	m.ctrl.T.Helper()

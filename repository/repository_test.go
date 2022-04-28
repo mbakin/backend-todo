@@ -26,3 +26,13 @@ func TestRepository_AddTodo(t *testing.T) {
 	repository.AddTodo(todo)
 	assert.Equal(t, initialLengthOfTodo+1, len(repository.GetTodos()))
 }
+
+func TestRpository_DeleteAll(t *testing.T) {
+
+	repository := repository.NewRepositoryTodo()
+
+	repository.GetTodos()
+	initialLengthOfTodo := len(repository.GetTodos())
+	repository.DeleteAllTodos()
+	assert.Equal(t, 0, initialLengthOfTodo)
+}
